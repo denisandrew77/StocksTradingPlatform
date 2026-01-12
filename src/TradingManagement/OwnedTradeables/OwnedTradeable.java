@@ -25,4 +25,8 @@ public abstract class OwnedTradeable extends Tradeable {
     public void setOwnedQuantity(double ownedQuantity) {
         this.ownedQuantity = ownedQuantity;
     }
+    @Override
+    public String toString() {
+        return tradeable + " " + "owned: " + ownedQuantity;
+    }
 }

@@ -2,16 +2,16 @@ package TradingManagement.OwnedTradeables;
 
 import TradingManagement.Crypto;
 import TradingManagement.Stock;
+import TradingManagement.Tradeable;
 
 public class OwnedStock extends OwnedTradeable {
-    private Stock stock;
+    private Tradeable tradeable;
 
-    public OwnedStock(Stock stock) {
-        super(stock);
-        this.stock = stock;
+    public OwnedStock(Tradeable tradeable) {
+        super(tradeable);
     }
 
-    public Stock getStock() {
-        return stock;
+    public Tradeable getTradeable() {
+        return tradeable;
     }
 }

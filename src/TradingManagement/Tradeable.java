@@ -23,6 +23,11 @@ public abstract class Tradeable {
     public double getQuantity() {
         return quantity;
     }
+    void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
     public String toString() {
         return name+ " "+tickerSymbol+" "+currentPrice+" "+quantity;
     }

@@ -1,16 +1,16 @@
 package TradingManagement.OwnedTradeables;
 
 import TradingManagement.Crypto;
+import TradingManagement.Tradeable;
 
 public class OwnedCrypto extends OwnedTradeable {
-    private Crypto crypto;
+    private Tradeable tradeable;
 
-    public OwnedCrypto(Crypto crypto) {
-        super(crypto);
-        this.crypto = new Crypto(crypto.getName(), crypto.getTickerSymbol(), getCrypto().getCurrentPrice(), crypto.getQuantity());
+    public OwnedCrypto(Tradeable tradeable) {
+        super(tradeable);
     }
 
-    public Crypto getCrypto() {
-        return crypto;
+    public Tradeable getCrypto() {
+        return tradeable;
     }
 }

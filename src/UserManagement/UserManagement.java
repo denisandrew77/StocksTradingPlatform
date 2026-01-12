@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class UserManagement {
     private ArrayList<User> users;
-    private static UserManagement userManagement = new UserManagement();
+    private static UserManagement userManagement;
     private UserManagement() {
         this.users = new ArrayList<>();
     }
@@ -31,19 +31,29 @@ public class UserManagement {
         System.out.println("User " + user.getName() + " registered successfully");
     }
 
-    public void logInUser(String username, String password) {
+    public boolean verifyUser(String username, String password) {
         for(User user : users) {
             if(username.equals(user.getName()) && password.equals(user.getPassword())) {
-                user.setLoggedIn(true);
-                System.out.println(user.getName() + " logged in successfully");
+                return true;
             }
+        }
+        return false;
+    }
+
+    public void logIn(User user) {
+        if(verifyUser(user.getName(),user.getPassword())) {
+            user.setLoggedIn(true);
+            System.out.println("User " + user.getName() + " logged in successfully");
+        }else{
+            System.out.println("Invalid username or password");
         }
     }
 
     public void viewPortfolio(User user) {
+        System.out.println(user+"'s Portfolio:"+"\n");
         if(user.isLoggedIn()) {
             for(User u: users) {
-                if(user.getName().equals(u.getName()) && user.getPassword().equals(u.getPassword())) {
+                if(user.getName().equals(u.getName())) {
                     for(OwnedTradeable tradeable : user.getPortfolio()) {
                         System.out.println(tradeable);
                     }
@@ -51,6 +61,17 @@ public class UserManagement {
             }
         }else{
             System.out.println("User " + user.getName() + " is not logged in");
+        }
+    }
+
+    public void addTradeable(User user,OwnedTradeable tradeable){
+        if(user.isLoggedIn()) {
+            for(User u: users) {
+                if(user.getName().equals(u.getName())) {
+                    System.out.println(tradeable.toString());
+                    u.getPortfolio().add(tradeable);
+                }
+            }
         }
     }
 }
