@@ -14,8 +14,7 @@ public class MarketInitialiser {
         stockFactory = new StocksFactory();
     }
 
-    public void initialise(){
-
+    public TradeablesManagement initialise(){
         /// create cryptos
         Crypto bitcoin     = (Crypto) cryptoFactory.createTradeable("Bitcoin", "BTC", 44646.00, 1000);
         Crypto ethereum    = (Crypto) cryptoFactory.createTradeable("Ethereum", "ETH", 2300.00, 1000);
@@ -64,6 +63,8 @@ public class MarketInitialiser {
         market.addStock(netflix);
         market.addStock(cocaCola);
         market.addStock(jnj);
+
+        return market;
     }
 
 }

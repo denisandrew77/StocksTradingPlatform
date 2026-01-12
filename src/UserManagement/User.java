@@ -4,6 +4,8 @@ import TradingManagement.Crypto;
 import TradingManagement.OwnedTradeables.OwnedCrypto;
 import TradingManagement.OwnedTradeables.OwnedTradeable;
 import TradingManagement.Tradeable;
+import TradingManagement.TradeablesManagement;
+import TradingManagement.TradingProcess.TradingMediator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +16,14 @@ public class User {
     private double balance;
     private boolean loggedIn;
     private List<OwnedTradeable> portfolio = new ArrayList<>();
+    private TradingMediator tradingMediator;
 
-    public User(String name, String password) {
+    public User(String name, String password, TradingMediator tradingMediator) {
         this.name = name;
         this.password = password;
         this.balance = 0;
         this.loggedIn = false;
+        this.tradingMediator = tradingMediator;
     }
 
     void addTradeable(OwnedTradeable tradeable){
@@ -56,5 +60,9 @@ public class User {
     @Override
     public String toString(){
         return name;
+    }
+
+    public void trade(TradingMediator tradingMediator, String tradeableName, double quantity){
+        this.tradingMediator.trade(this, tradeableName, quantity);
     }
 }

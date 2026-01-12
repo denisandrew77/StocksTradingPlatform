@@ -48,24 +48,6 @@ public class TradeablesManagement {
         }
     }
 
-    public double getCryptoPrice(Crypto crypto){
-        for(Crypto c : cryptos){
-            if(c.getName().equals(crypto.getName()) && c.getTickerSymbol().equals(crypto.getTickerSymbol())){
-                return c.getCurrentPrice();
-            }
-        }
-        return -1;
-    }
-
-    public double getStockPrice(Stock stock){
-        for(Stock s : stocks){
-            if(s.getName().equals(stock.getName()) && s.getTickerSymbol().equals(stock.getTickerSymbol())){
-                return s.getCurrentPrice();
-            }
-        }
-        return -1;
-    }
-
     public Crypto getCryptoByName(String name){
         for(Crypto c : cryptos){
             if(c.getName().equals(name)){
@@ -83,4 +65,23 @@ public class TradeablesManagement {
         }
         return null;
     }
+
+    public double getCryptoPrice(String nameOrTickerSymbol){
+        for(Crypto c : cryptos){
+            if(c.getName().equals(nameOrTickerSymbol) || c.getTickerSymbol().equals(nameOrTickerSymbol)){
+                return c.getCurrentPrice();
+            }
+        }
+        return -1;
+    }
+
+    public double getStockPrice(String nameOrTickerSymbol){
+        for(Stock s : stocks){
+            if(s.getName().equals(nameOrTickerSymbol) || s.getTickerSymbol().equals(nameOrTickerSymbol)){
+                return s.getCurrentPrice();
+            }
+        }
+        return -1;
+    }
+
 }
