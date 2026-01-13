@@ -48,7 +48,7 @@ public class TradingMediator implements BaseTradingMediator{
                 }
             } else if(stock!=null && this.checkStocksTradeTime()){
                 double currentBuyingPrice = stock.getCurrentPrice();
-                if(quantity*currentBuyingPrice <= user.getBalance()){
+                if(quantity*currentBuyingPrice <= user.getBalance() && quantity<=stock.getQuantity()){
                     OwnedStock ownedStock = new OwnedStock(stock);
                     ownedStock.setOwnedQuantity(quantity);
                     user.setBalance(user.getBalance()-quantity*currentBuyingPrice);

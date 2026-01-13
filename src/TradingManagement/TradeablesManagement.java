@@ -1,10 +1,12 @@
 package TradingManagement;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class TradeablesManagement {
     private ArrayList<Crypto> cryptos = new ArrayList<Crypto>();
     private ArrayList<Stock> stocks = new ArrayList<Stock>();
+    private ArrayList<TradeRecord> tradeRecords = new ArrayList<TradeRecord>();
     private static TradeablesManagement tradeablesManagement;
     private TradeablesManagement() {
 
@@ -37,6 +39,9 @@ public class TradeablesManagement {
         for (Crypto c : cryptos) {
             if (c.getName().equals(crypto.getName())) {
                 c.setQuantity(c.getQuantity() - amountBought);
+                LocalDate now = LocalDate.now();
+                TradeRecord tradeRecord = new TradeRecord(crypto.getName(), crypto.getQuantity(),crypto.getCurrentPrice(),now);
+                this.tradeRecords.add(tradeRecord);
             }
         }
     }
@@ -44,6 +49,9 @@ public class TradeablesManagement {
         for (Stock s : stocks) {
             if (s.getName().equals(stock.getName())) {
                 s.setQuantity(s.getQuantity() - amountBought);
+                LocalDate now = LocalDate.now();
+                TradeRecord tradeRecord = new TradeRecord(stock.getName(), stock.getQuantity(),stock.getCurrentPrice(),now);
+                this.tradeRecords.add(tradeRecord);
             }
         }
     }
@@ -84,4 +92,11 @@ public class TradeablesManagement {
         return -1;
     }
 
+    public ArrayList<TradeRecord> getTradeables() {
+        return tradeRecords;
+    }
+
+    public void addTradeRecord(TradeRecord record) {
+        tradeRecords.add(record);
+    }
 }

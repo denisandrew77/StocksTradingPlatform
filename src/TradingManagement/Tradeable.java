@@ -1,5 +1,8 @@
 package TradingManagement;
 
+import TradingManagement.Notifications.PriceChangeNotifier;
+import TradingManagement.Notifications.TradeablePriceChangeNotifier;
+
 public abstract class Tradeable {
     String name;
     String tickerSymbol;
@@ -25,6 +28,9 @@ public abstract class Tradeable {
     }
     void setQuantity(double quantity) {
         this.quantity = quantity;
+    }
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
     }
 
     @Override

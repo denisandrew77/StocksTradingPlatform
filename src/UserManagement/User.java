@@ -65,4 +65,8 @@ public class User {
     public void trade(TradingMediator tradingMediator, String tradeableName, double quantity){
         this.tradingMediator.trade(this, tradeableName, quantity);
     }
+
+    public void getPriceChangeNotification(double price, String tradeableName){
+        System.out.println("Price Change Notification: "+tradeableName+" at "+price);
+    }
 }

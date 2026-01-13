@@ -27,7 +27,7 @@ public class Main {
         * 9. Template method
         * 10. Strategy - trading strategy
         * 11. Mediator - between user and market
-        * 12. Observer - notification for price changes
+        * 12. Observer
         * */
 
         MarketInitialiser marketInitialiser = new MarketInitialiser();
