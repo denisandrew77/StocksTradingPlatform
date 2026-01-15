@@ -1,12 +1,6 @@
-import TradingManagement.Crypto;
 import TradingManagement.MarketInitialisation.MarketInitialiser;
-import TradingManagement.OwnedTradeables.OwnedCrypto;
-import TradingManagement.OwnedTradeables.OwnedTradeable;
 import TradingManagement.Stock;
-import TradingManagement.Tradeable;
-import TradingManagement.TradeablesFactory.CryptoFactory;
-import TradingManagement.TradeablesFactory.StocksFactory;
-import TradingManagement.TradeablesFactory.TradeableFactory;
+import TradingManagement.Strategies.StrategyPicker;
 import TradingManagement.TradeablesManagement;
 import TradingManagement.TradingProcess.TradingMediator;
 import UserManagement.User;
@@ -61,6 +55,24 @@ public class Main {
 
         userManagement.viewPortfolio(user1);
         System.out.println(user1.getBalance());
+        
+        // After creating users and market...
 
+        StrategyPicker strategyPicker = new StrategyPicker();
+        strategyPicker.displayAvailableStrategies();
+
+        strategyPicker.setUserStrategy(user1, strategyPicker.getDayTradingStrategy());
+        strategyPicker.setUserStrategy(user2, strategyPicker.getLongTermStrategy());
+        strategyPicker.setUserStrategy(user3, strategyPicker.getAutoBuyStrategy());
+
+        Stock apple = market.getStockByName("Apple Inc.");
+        strategyPicker.buy(user1, 5, apple);
+        strategyPicker.buy(user2, 10, apple);
+
+        strategyPicker.configureAutoTradeRule(user3, apple, 180.0, 190.0, 5);
+
+        strategyPicker.checkAutoTrades(user3);
+
+        strategyPicker.endOfDayForAll();
     }
 }
