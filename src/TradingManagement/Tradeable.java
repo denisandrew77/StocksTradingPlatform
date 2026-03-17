@@ -1,8 +1,5 @@
 package TradingManagement;
 
-import TradingManagement.Notifications.PriceChangeNotifier;
-import TradingManagement.Notifications.TradeablePriceChangeNotifier;
-
 public abstract class Tradeable {
     String name;
     String tickerSymbol;

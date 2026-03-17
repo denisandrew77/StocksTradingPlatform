@@ -22,7 +22,7 @@ public class TradingMediator implements BaseTradingMediator{
 
     private boolean checkStocksTradeTime(){
         LocalDateTime now = LocalDateTime.now();
-        if(now.getHour()>9 && now.getHour()<18 && now.getDayOfWeek()!=DayOfWeek.SATURDAY && now.getDayOfWeek()!=DayOfWeek.SUNDAY){
+        if(now.getHour()>10 && now.getHour()<18 && now.getDayOfWeek()!=DayOfWeek.SATURDAY && now.getDayOfWeek()!=DayOfWeek.SUNDAY){
             return true;
         }
         return false;
@@ -60,6 +60,9 @@ public class TradingMediator implements BaseTradingMediator{
                     return false;
                 }
                 return true;
+            }
+            if(this.checkStocksTradeTime()==false){
+                System.out.println("Trading is not allowed at this time");
             }
         }
         return false;
