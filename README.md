@@ -1,4 +1,4 @@
-📈 Trading App (Java)
+📈 Trading Platform
 
 A trading application built in Java, designed to simulate stock and cryptocurrency trading. 
 The project demonstrates the use of multiple design patterns and clean architecture principles.
